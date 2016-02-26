@@ -73,7 +73,7 @@ int main()
 }
 
 
-/*std::move on const object*/
+/********************std::move on const object*********************************************/
 class Annotation {
 public:
 explicit Annotation(const std::string text)
@@ -101,14 +101,12 @@ string(const string& rhs); // copy ctor
 string(string&& rhs); // move ctor
 …
 };
-/*the result of
-std::move(text) is an rvalue of type const std::string. That rvalue can’t be
+/*the result of std::move(text) is an rvalue of type const std::string. That rvalue can’t be
 passed to std::string’s move constructor, because the move constructor takes an
 rvalue reference to a non-const std::string. The rvalue can, however, be passed to
 the copy constructor, because an lvalue-reference-to-const is permitted to bind to a
 const rvalue. The member initialization therefore invokes the copy constructor in
 std::string, even though text has been cast to an rvalue!*/
-
 /*
 There are two lessons to be drawn from this example. 
 1. don’t declare objects const if you want to be able to move from them. Move requests on const objects are
