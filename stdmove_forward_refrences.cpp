@@ -4,6 +4,16 @@ i.e. allowing the efficient transfer of resources from t to another object.
 In particular, std::move produces an xvalue expression that identifies its argument t. 
 It is exactly equivalent to a static_cast to an rvalue reference type.*/
 
+/*std::move internal implmentation*/
+/*
+Defined in header <utility>
+template< class T >
+typename std::remove_reference<T>::type&& move( T&& t ); (since C++11) 
+
+template< class T >
+constexpr typename std::remove_reference<T>::type&& move( T&& t ); (until C++14)
+*/
+
 // Example program
 #include <iostream>
 #include <string>
